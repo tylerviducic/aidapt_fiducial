@@ -7,8 +7,8 @@ class FiducialCuts:
         self.theta_cut = 0.0
         self.momentum_cut = 0.0
 
-    def check_if_pass(self, event):
-        return True
+    def check_if_pass(self, phi, theta, momentum):
+        return self._passes_phi(phi) and self._passes_theta(theta) and self._passes_momentum(momentum)
 
 
     # Private methods
