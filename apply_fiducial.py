@@ -1,6 +1,7 @@
 # by Tyler Viducic and Torri Jeski
 
 import numpy as np
+from dataManager import DataManager
 
 # Read in data here 
 
@@ -8,4 +9,6 @@ data_file = '/media/tylerviducic/Elements/aidapt/synthetic/clasfilter2_5M780.npy
 
 data_array = np.load(data_file)
 
-print(data_array[0][0])
+for event in data_array:
+    current_event = DataManager(event)
+    print(current_event.proton)
