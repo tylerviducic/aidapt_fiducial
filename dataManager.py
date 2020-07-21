@@ -10,4 +10,27 @@ class DataManager:
         self.pi_minus = (event_array[4], event_array[7], event_array[10], event_array[13])        
 
     def get_proton_phi(self):
-        return 
+        return self._get_theta(particle)
+
+    def get_pi_plus_phi(self):
+        return self._get_phi(self.pi_plus)
+
+    def get_pi_minus_phi(self):
+        return self._get_phi(self.pi_minus)
+
+    def get_proton_theta(self):
+        return self._get_theta(self.proton)
+
+    def get_pi_plus_theta(self):
+        return self._get_theta(self.pi_plus)
+
+    def get_pi_minus_theta(self):
+        return self._get_theta(self.pi_minus)
+
+    # Private methods
+
+    def _get_phi(self, particle):
+        return np.arctan(particle[1] / particle[0])
+
+    def _get_theta(self, particle):
+        return np.arctan(np.sqrt((particle[0] * particle[0]) + particle[1] * particle[1]) / particle[2])
