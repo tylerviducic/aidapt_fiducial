@@ -2,6 +2,7 @@
 
 import numpy as np
 from dataManager import DataManager
+import fiducialCuts as fd
 
 # Read in data here 
 
