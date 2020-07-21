@@ -8,4 +8,4 @@ data_file = '/media/tylerviducic/Elements/aidapt/synthetic/clasfilter2_5M780.npy
 
 data_array = np.load(data_file)
 
-print(data_array.tostring)
+print(data_array[0][0])
