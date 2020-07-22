@@ -1,7 +1,7 @@
 # used to get information from synthetic datafile
-import numpy as np
+import math
 
-class DataManager:
+class Event:
 
     def __init__(self, event_array):
         self.proton = (event_array[2], event_array[5], event_array[8], event_array[11])
@@ -26,10 +26,22 @@ class DataManager:
     def get_pi_minus_theta(self):
         return self._get_theta(self.pi_minus)
 
+    def get_proton_momentum(self);
+        return self._get_momentum(self.proton)
+
+    def get_pi_plus_momentum(self);
+        return self._get_momentum(self.pi_plus)
+
+    def get_pi_minus_momentum(self);
+        return self._get_momentum(self.pi_minus)
+
     # Private methods
 
     def _get_phi(self, particle):
-        return np.arctan(particle[1] / particle[0])
+        return math.arctan(particle[1] / particle[0])
 
     def _get_theta(self, particle):
-        return np.arctan(np.sqrt((particle[0] * particle[0]) + particle[1] * particle[1]) / particle[2])
+        return math.arctan(np.sqrt((particle[0] * particle[0]) + particle[1] * particle[1]) / particle[2])
+
+    def _get_momentum(self, particle):
+        return math.sqrt(particle[0] * particle[0] + particle[1] * particle[1] + particle[2] * particle[2])
