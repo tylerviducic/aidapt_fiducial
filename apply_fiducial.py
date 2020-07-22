@@ -20,6 +20,8 @@ for n in range(num_rows):
 
     if n % 10000 == 0:
         print(n)
+    
+    print('this is a test')
 
     row = input_array[n]
     event = Event(row)
