@@ -18,8 +18,8 @@ num_rows, num_columns = input_array.shape
 start = time.time()
 for n in range(num_rows):
 
-    if n % 10000 == 0:
-        print(n)
+    if n % 100000 == 0:
+        break
 
     row = input_array[n]
     event = Event(row)
@@ -38,4 +38,4 @@ print("Theoretical size of output array: " + str(num_rows - len(delete_row_list)
 num_rows, num_columns = output_array.shape
 
 print('Size of output array: ' + str(num_rows))
-print('time/event = ' + str(end - start)/2506780 + " seconds")
+print('time/event = ' + str(end - start)/100000 + " seconds")
