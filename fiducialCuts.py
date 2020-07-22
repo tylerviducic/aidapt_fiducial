@@ -7,9 +7,9 @@ class FiducialCuts:
     def __init__(self, event, missing_pi_minus=True):
         self.missing_pi_minus = missing_pi_minus
         self.event = event
-        self.phi_cut = 26.0 #in Degrees
+        self.phi_cut = 26.0 # in Degrees
         self.theta_cut = 0.985
-        self.momentum_cut = 0.375
+        self.momentum_cut = 0.375 
 
     def check_event_pass(self):
         return self._check_if_event_pass_momentum and self._check_if_event_pass_phi and self._check_if_event_pass_theta
@@ -40,3 +40,7 @@ class FiducialCuts:
     def _check_if_event_pass_momentum(self):
         if self.missing_pi_minus:
             return self._passes_momentum(self.event.get_proton_momentum)
+
+
+
+
