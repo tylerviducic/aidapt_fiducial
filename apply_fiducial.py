@@ -3,25 +3,39 @@
 import numpy as np
 from event import Event
 from fiducialCuts import FiducialCuts
+import time
 
 # Read in data here 
 
 data_file = '/media/tylerviducic/Elements/aidapt/synthetic/clasfilter2_5M780.npy' # change to your path, obviously
 
-data_array = np.load(data_file)
+input_array = np.load(data_file)
+output_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+delete_row_list = []
 
-num_rows, num_columns = data_array.shape
+num_rows, num_columns = input_array.shape
 
-print(num_rows)
-
+start = time.time()
 for n in range(num_rows):
-    event = Event(data_array[n])
+
+    if n % 10000 == 0:
+        print(n)
+
+    row = input_array[n]
+    event = Event(row)
     fd = FiducialCuts(event)
 
-    if not fd.check_event_pass():
-        print('Did not pass')
-        data_array = np.delete(data_array, n)
+    if fd.check_event_pass():
+        output_array = np.vstack((output_array, row))
+    else:
+        delete_row_list.append(n)
 
-num_rows, num_columns = data_array.shape
 
-print(num_rows)
+output_array = np.delete(output_array, 0)
+
+end = time.time()
+print("Theoretical size of output array: " + str(num_rows - len(delete_row_list)))
+num_rows, num_columns = output_array.shape
+
+print('Size of output array: ' + str(num_rows))
+print('time/event = ' + str(end - start)/2506780 + " seconds")
