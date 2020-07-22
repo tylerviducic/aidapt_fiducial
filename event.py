@@ -26,22 +26,22 @@ class Event:
     def get_pi_minus_theta(self):
         return self._get_theta(self.pi_minus)
 
-    def get_proton_momentum(self);
+    def get_proton_momentum(self):
         return self._get_momentum(self.proton)
 
-    def get_pi_plus_momentum(self);
+    def get_pi_plus_momentum(self):
         return self._get_momentum(self.pi_plus)
 
-    def get_pi_minus_momentum(self);
+    def get_pi_minus_momentum(self):
         return self._get_momentum(self.pi_minus)
 
     # Private methods
 
     def _get_phi(self, particle):
-        return math.arctan(particle[1] / particle[0])
+        return math.atan(particle[1] / particle[0])
 
     def _get_theta(self, particle):
-        return math.arctan(np.sqrt((particle[0] * particle[0]) + particle[1] * particle[1]) / particle[2])
+        return math.atan(math.sqrt((particle[0] * particle[0]) + particle[1] * particle[1]) / particle[2])
 
     def _get_momentum(self, particle):
         return math.sqrt(particle[0] * particle[0] + particle[1] * particle[1] + particle[2] * particle[2])
