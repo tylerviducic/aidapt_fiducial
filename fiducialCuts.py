@@ -12,7 +12,7 @@ class FiducialCuts:
         self.momentum_cut = 0.375 
 
     def check_event_pass(self):
-        return self._check_if_event_pass_momentum and self._check_if_event_pass_phi and self._check_if_event_pass_theta
+        return self._check_if_event_pass_momentum() and self._check_if_event_pass_phi and self._check_if_event_pass_theta
 
     # Private methods
 
@@ -27,19 +27,18 @@ class FiducialCuts:
 
     def _check_if_event_pass_phi(self):
         if self.missing_pi_minus:
-            return self._passes_phi(self.event.get_proton_phi) and self._passes_phi(self.event.get_pi_plus_phi)
+            return self._passes_phi(self.event.get_proton_phi()) and self._passes_phi(self.event.get_pi_plus_phi())
         else: 
-             return self._passes_phi(self.event.get_proton_phi) and self._passes_phi(self.event.get_pi_plus_phi) and self._passes_phi(self.event.get_pi_minus_phi)
+             return self._passes_phi(self.event.get_proton_phi()) and self._passes_phi(self.event.get_pi_plus_phi()) and self._passes_phi(self.event.get_pi_minus_phi())
 
     def _check_if_event_pass_theta(self):
         if self.missing_pi_minus:
-            return self._passes_theta(self.event.get_proton_theta) and self._passes_theta(self.event.get_pi_plus_theta)
+            return self._passes_theta(self.event.get_proton_theta()) and self._passes_theta(self.event.get_pi_plus_theta())
         else: 
-             return self._passes_theta(self.event.get_proton_theta) and self._passes_theta(self.event.get_pi_plus_theta) and self._passes_theta(self.event.get_pi_minus_theta)
+             return self._passes_theta(self.event.get_proton_theta()) and self._passes_theta(self.event.get_pi_plus_theta()) and self._passes_theta(self.event.get_pi_minus_theta())
 
     def _check_if_event_pass_momentum(self):
-        if self.missing_pi_minus:
-            return self._passes_momentum(self.event.get_proton_momentum)
+        return self._passes_momentum(self.event.get_proton_momentum())
 
 
 
