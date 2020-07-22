@@ -39,6 +39,4 @@ class FiducialCuts:
 
     def _check_if_event_pass_momentum(self):
         if self.missing_pi_minus:
-            return self._passes_momentum(self.event.get_proton_momentum) and self._passes_momentum(self.event.get_pi_plus_momentum)
-        else: 
-             return self._passes_momentum(self.event.get_proton_momentum) and self._passes_momentum(self.event.get_pi_plus_momentum) and self._passes_momentum(self.event.get_pi_minus_momentum)
+            return self._passes_momentum(self.event.get_proton_momentum)
